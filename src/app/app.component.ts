@@ -1,7 +1,8 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { RouterOutlet } from "@angular/router";
 import { HeaderComponent } from "./components/header/header.component";
 import { HomeComponent } from "./pages/home/home.component";
+import { Cart } from "./models/cart.model";
 
 // import { BrowserModule } from "@angular/platform-browser";
 
@@ -29,7 +30,7 @@ import { HomeComponent } from "./pages/home/home.component";
 // import { FiltersComponent } from './pages/home/components/filters/filters.component';
 // import { HeaderComponent } from './components/header/header.component';
 // import { CartComponent } from './pages/cart/cart.component';
-// import { CartService } from './services/cart.service';
+import { CartService } from "./services/cart.service";
 // import { HttpClientModule } from '@angular/common/http';
 // import { StoreService } from './services/store.service';
 
@@ -38,13 +39,21 @@ import { HomeComponent } from "./pages/home/home.component";
   standalone: true,
   imports: [RouterOutlet, HeaderComponent, HomeComponent],
   template: `
-    <!-- <h1>Welcome to {{ title }}!</h1> -->
-
-    <app-header></app-header>
+    <app-header [cart]="cart"></app-header>
     <router-outlet />
   `,
   styles: [],
 })
-export class AppComponent {
-  title = "store";
+export class AppComponent implements OnInit {
+  // title = "store";
+
+  cart: Cart = { items: [] };
+
+  constructor(private cartService: CartService) {}
+
+  ngOnInit(): void {
+    this.cartService.cart.subscribe((_cart) => {
+      this.cart = _cart;
+    });
+  }
 }
