@@ -7,6 +7,7 @@ import { CommonModule } from "@angular/common";
 import { Cart, CartItem } from "../../models/cart.model";
 import { CartService } from "../../services/cart.service";
 // import { MatButtonModule } from "@angular/material/button";
+import { RouterLink, RouterOutlet } from "@angular/router";
 
 @Component({
   selector: "app-header",
@@ -17,6 +18,8 @@ import { CartService } from "../../services/cart.service";
     MatBadgeModule,
     MatMenuModule,
     CommonModule,
+    RouterLink,
+    RouterOutlet,
     // MatButtonModule,
   ],
   // template: `

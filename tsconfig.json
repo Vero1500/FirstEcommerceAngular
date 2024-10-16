@@ -22,6 +22,10 @@
     "lib": ["ES2022", "dom"],
     "types": ["@stripe/stripe-js"]
   },
+  "include": [
+    "src/**/*.ts",
+    "node_modules/@stripe/stripe-js/pure.d.ts" // Explicitly include this if necessary
+  ],
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,

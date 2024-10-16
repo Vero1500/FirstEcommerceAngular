@@ -12,7 +12,6 @@
       (columnCountChange)="onColumnsCountChange($event)"
     >
     </app-products-header>
-    {{ category }}
     <mat-grid-list gutterSize="16" [cols]="cols" [rowHeight]="rowHeight">
       <mat-grid-tile *ngFor="let product of products">
         <app-product-box

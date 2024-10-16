@@ -7,7 +7,8 @@ import { MatTableModule } from "@angular/material/table";
 import { MatIconModule } from "@angular/material/icon";
 import { CartService } from "../../services/cart.service";
 import { HttpClient } from "@angular/common/http";
-import { loadStripe } from "./../../../../node_modules/@stripe/stripe-js/pure.d";
+import { loadStripe } from "@stripe/stripe-js";
+import { RouterLink, RouterOutlet } from "@angular/router";
 
 @Component({
   selector: "app-cart",
@@ -18,6 +19,8 @@ import { loadStripe } from "./../../../../node_modules/@stripe/stripe-js/pure.d"
     MatIconModule,
     MatButtonModule,
     MatTableModule,
+    RouterLink,
+    RouterOutlet,
   ],
   // template: `
   //   <p>

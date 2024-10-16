@@ -8,13 +8,13 @@ app.use(bodyparser.urlencoded({ extended: false }));
 app.use(bodyparser.json());
 app.use(cors({ origin: true, redentials: true }));
 
-const strie = require("stripe")(
+const stripe = require("stripe")(
   "sk_test_51QARgrCo6hnsJgDT9D7ZhCPZxTytNQ6mWTrddDf5yGFlpqqd26TQROMmPtdcVXUTrepjv7SZSAZHh5PozSlS0rlK00q3eWwkP3"
 );
 
 app.post("/checkout", async (req, res, next) => {
   try {
-    const session = await stripe.checkout.session.create({
+    const session = await stripe.checkout.sessions.create({
       line_items: req.body.items.map((item) => ({
         price_data: {
           currency: "eur",
